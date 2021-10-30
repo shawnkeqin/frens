@@ -4,6 +4,9 @@ import axios from 'axios';
 
 import signinImage from '../assets/signup.jpg'; 
 
+const cookies = new Cookies();
+
+
 const initialState = {
     fullname: '',
     username: '',
@@ -27,8 +30,22 @@ const Auth = () => {
 
         const URL = 'http://localhost:5000/auth';
 
+        const {data: {token, userId, hashedPassword}} = await axios.post(`${URL}/${isSignup ? 'signup' : 'login'}`, {
+            username, password, fullName, phoneNumber, avatarURL
+        })
+        cookies.set('token', token);
+        cookies.set('username', username);
+        cookies.set('fullName', fullName);
+        cookies.set('userId', userId);
 
-        console.log(form); 
+        if(isSignup){
+            cookies.set('phoneNumber', phoneNumber);
+            cookies.set('avatarURL', avatarURL);
+            cookies.set('hashedPassword', hashedPassword);
+        }
+
+        window.location.reload(); 
+        
     };
 
 
