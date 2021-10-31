@@ -35,6 +35,7 @@ const ChannelInner = ({ setIsEditing }) => {
       sendMessage(updatedMessage);
       setGiphyState(false);
     }
+    console.log(updatedMessage); 
   };
 
   return (
