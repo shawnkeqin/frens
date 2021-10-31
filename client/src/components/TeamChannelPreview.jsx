@@ -12,7 +12,7 @@ const TeamChannelPreview = ({
   const { channel: activeChannel, client } = useChatContext();
   const ChannelPreview = () => (
     <p className="channel-preview__item">
-      # {channel?.data?.name || channel?.data?.id}
+      👫 {channel?.data?.name || channel?.data?.id}
     </p>
   );
 
