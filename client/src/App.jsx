@@ -34,8 +34,12 @@ const App = () => {
 
   if (!authToken) return <Auth />;
   return (
+    <>
+    <div>hi</div>
     <div className="app__wrapper">
+         
       <Chat client={client} theme="theme light">
+    
         <ChannelListContainer
           isCreating={isCreating}
           setIsCreating={setIsCreating}
@@ -51,6 +55,7 @@ const App = () => {
         ></ChannelContainer>
       </Chat>
     </div>
+    </>
   );
 };
 
