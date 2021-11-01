@@ -8,10 +8,10 @@ const appointmentSlice = createSlice({
   initialState: initialAppointmentState,
   reducers: {
     setAppointmentTime(state, action) {
-      state.time = state.time + action.payload;
+      state.time = action.payload;
     },
     setAppointmentPlace(state, action) {
-        state.place = state.place + action.payload;
+        state.place = action.payload;
       },
   },
 });

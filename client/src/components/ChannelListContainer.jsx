@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { ChannelList, useChatContext } from 'stream-chat-react';
 import Cookies from 'universal-cookie';
-
+import { appointmentActions } from "../app/store";
+import { useDispatch } from "react-redux";
 import { ChannelSearch, TeamChannelList, TeamChannelPreview } from './';
 import FrensIcon from '../assets/frens.png'
 import LogoutIcon from '../assets/logout.png'
@@ -39,7 +40,23 @@ const customChannelMessagingFilter = (channels) => {
 
 const ChannelListContent = ({ isCreating, setIsCreating, setCreateType, setIsEditing, setToggleContainer }) => {
     const { client } = useChatContext();
-
+    const dispatch = useDispatch();
+    const setApptTime = (arr) => {
+        arr.map(item => {
+            if(/time/.test(item.text)){
+                const first = item.text.indexOf(':');
+                const second = item.text.indexOf(',');
+                const extractTime = item.text.substring(first,second); 
+                console.log(extractTime);
+                dispatch(appointmentActions.setAppointmentTime(extractTime));
+            }
+        })
+      };
+    // console.log(client.activeChannels[Object.keys(client.activeChannels)[1]].state.messages);
+    if(client.activeChannels[Object.keys(client.activeChannels)[0]]?.state?.messages){
+        console.log(client.activeChannels[Object.keys(client.activeChannels)[0]].state.messages);
+        setApptTime(client.activeChannels[Object.keys(client.activeChannels)[0]]?.state?.messages);
+    }
     const logout = () => {
         cookies.remove("token");
         cookies.remove('userId');

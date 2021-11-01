@@ -18,15 +18,15 @@ export const GiphyContext = React.createContext({});
 
 const ChannelInner = ({ setIsEditing }) => {
   const [giphyState, setGiphyState] = useState(false);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const setApptTime = () => {
-    dispatch(appointmentActions.setAppointmentTime());
-  };
+  // const setApptTime = (val) => {
+  //   dispatch(appointmentActions.setAppointmentTime(val));
+  // };
 
-  const setApptPlace = () => {
-    dispatch(appointmentActions.setAppointmentPlace());
-  };
+  // const setApptPlace = (val) => {
+  //   dispatch(appointmentActions.setAppointmentPlace(val));
+  // };
 
   const { sendMessage } = useChannelActionContext();
 
@@ -47,9 +47,9 @@ const ChannelInner = ({ setIsEditing }) => {
       sendMessage(updatedMessage);
       setGiphyState(false);
     }
-    console.log(updatedMessage.text); 
-    setApptTime(updatedMessage.text); 
-    setApptPlace(updatedMessage.text)
+ 
+    // setApptTime(updatedMessage.text); 
+    // setApptPlace(updatedMessage.text)
   };
 
   return (

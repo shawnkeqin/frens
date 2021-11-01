@@ -46,7 +46,7 @@ const UserList = ({ setSelectedUsers }) => {
     const [loading, setLoading] = useState(false);
     const [listEmpty, setListEmpty] = useState(false);
     const [error, setError] = useState(false);
-
+    console.log(client);
     useEffect(() => {
         const getUsers = async () => {
             if(loading) return;
