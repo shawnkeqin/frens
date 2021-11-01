@@ -1,7 +1,8 @@
 # 👭 frens #
 ### 👭 frens is a real-time chat app for friends to chat and set up meeting appointments with each other in an easy to use manner. ### 
 
-![Screen Shot 2021-11-01 at 1 08 07 AM](https://user-images.githubusercontent.com/44067954/139594533-116cbf11-87b9-46ed-81c0-f40ae3b9119e.png)
+<img width="1785" alt="Screen Shot 2021-11-01 at 1 21 09 AM" src="https://user-images.githubusercontent.com/44067954/139594870-1e952816-a4a8-4ff0-a3ff-806d6232b005.png">
+
 
 **How to run:**
 1. cd client
