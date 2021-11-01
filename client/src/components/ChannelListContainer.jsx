@@ -44,11 +44,23 @@ const ChannelListContent = ({ isCreating, setIsCreating, setCreateType, setIsEdi
     const setApptTime = (arr) => {
         arr.map(item => {
             if(/time/.test(item.text)){
-                const first = item.text.indexOf(':');
-                const second = item.text.indexOf(',');
-                const extractTime = item.text.substring(first,second); 
+                var matchTime = item.text.match(/[time:]/gi);
+                var firstIndexTime = item.text.indexOf(matchTime[0]);
+                var lastIndexTime  = item.text.lastIndexOf(matchTime[matchTime.length-1]);
+                const extractTime = item.text.substring(lastIndexTime+1,item.text.indexOf(',')); 
                 console.log(extractTime);
                 dispatch(appointmentActions.setAppointmentTime(extractTime));
+                var matchPlace = item.text.match(/[place:]/gi);
+                var firstIndexPlace = item.text.indexOf(matchPlace[0]);
+                var lastIndexPlace  = item.text.lastIndexOf(matchPlace[matchPlace.length-1]);
+                const extractPlace = item.text.substring(lastIndexPlace+1,item.text.indexOf(',')); 
+                console.log(extractPlace);
+                dispatch(appointmentActions.setAppointmentPlace(extractPlace));
+                // const first = item.text.indexOf(/time:/.match('time:'));
+                // const second = item.text.indexOf(',');
+                // const extractTime = item.text.substring(first+1,second); 
+                // console.log(extractTime);
+                // dispatch(appointmentActions.setAppointmentTime(extractTime));
             }
         })
       };
