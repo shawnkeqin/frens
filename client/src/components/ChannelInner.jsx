@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { appointmentActions } from "../app/store";
+import { useDispatch } from "react-redux";
 import {
   MessageList,
   MessageInput,
@@ -16,6 +18,16 @@ export const GiphyContext = React.createContext({});
 
 const ChannelInner = ({ setIsEditing }) => {
   const [giphyState, setGiphyState] = useState(false);
+  const dispatch = useDispatch();
+
+  const setApptTime = () => {
+    dispatch(appointmentActions.setAppointmentTime());
+  };
+
+  const setApptPlace = () => {
+    dispatch(appointmentActions.setAppointmentPlace());
+  };
+
   const { sendMessage } = useChannelActionContext();
 
   const overrideSubmitHandler = (message) => {
@@ -35,7 +47,9 @@ const ChannelInner = ({ setIsEditing }) => {
       sendMessage(updatedMessage);
       setGiphyState(false);
     }
-    console.log(updatedMessage); 
+    console.log(updatedMessage.text); 
+    setApptTime(updatedMessage.text); 
+    setApptPlace(updatedMessage.text)
   };
 
   return (

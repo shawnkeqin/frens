@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { StreamChat } from "stream-chat";
 import { ChannelList, Chat } from "stream-chat-react";
 import Cookies from "universal-cookie";
-import { ChannelListContainer, ChannelContainer, Auth } from "./components";
+import { ChannelListContainer, ChannelContainer, Auth, AppointmentCards } from "./components";
 import "./App.css";
 import "stream-chat-react/dist/css/index.css";
 const apiKey = "pxwyvdks32vu";
@@ -35,7 +35,7 @@ const App = () => {
   if (!authToken) return <Auth />;
   return (
     <>
-    <div>hi</div>
+    <div><AppointmentCards /></div>
     <div className="app__wrapper">
          
       <Chat client={client} theme="theme light">
