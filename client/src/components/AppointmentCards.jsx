@@ -30,7 +30,7 @@ const testArr = ["Date: 16/11/21, Appointment Name: Dinner with Craig,\Time: 6PM
       </CardActions>
     </Card> */}
 
-console.log(time);
+// console.log(time);
     return (
       <div>
       {testArr.map((item) =>( 

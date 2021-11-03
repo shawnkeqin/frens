@@ -64,10 +64,16 @@ const ChannelListContent = ({ isCreating, setIsCreating, setCreateType, setIsEdi
             }
         })
       };
-    // console.log(client.activeChannels[Object.keys(client.activeChannels)[1]].state.messages);
-    if(client.activeChannels[Object.keys(client.activeChannels)[0]]?.state?.messages){
-        console.log(client.activeChannels[Object.keys(client.activeChannels)[0]].state.messages);
-        setApptTime(client.activeChannels[Object.keys(client.activeChannels)[0]]?.state?.messages);
+
+ 
+    if(client){
+        let combinedArray = []; 
+        Object.keys(client.activeChannels).map(key => {
+            if(key){
+                combinedArray.push(...client.activeChannels[key]?.state?.messages);
+                console.log(combinedArray); 
+        }
+        })
     }
     const logout = () => {
         cookies.remove("token");
