@@ -43,25 +43,24 @@ const ChannelListContent = ({ isCreating, setIsCreating, setCreateType, setIsEdi
     const dispatch = useDispatch();
     const setApptTime = (arr) => {
         arr.map(item => {
+        var extractTime = '';
+        var extractPlace = '';
             if(/time/.test(item.text)){
                 var matchTime = item.text.match(/[time:]/gi);
                 var firstIndexTime = item.text.indexOf(matchTime[0]);
-                var lastIndexTime  = item.text.lastIndexOf(matchTime[matchTime.length-1]);
-                const extractTime = item.text.substring(lastIndexTime+1,item.text.indexOf(',')); 
-                console.log(extractTime);
-                dispatch(appointmentActions.setAppointmentTime(extractTime));
-                var matchPlace = item.text.match(/[place:]/gi);
-                var firstIndexPlace = item.text.indexOf(matchPlace[0]);
-                var lastIndexPlace  = item.text.lastIndexOf(matchPlace[matchPlace.length-1]);
-                const extractPlace = item.text.substring(lastIndexPlace+1,item.text.indexOf(',')); 
-                console.log(extractPlace);
-                dispatch(appointmentActions.setAppointmentPlace(extractPlace));
-                // const first = item.text.indexOf(/time:/.match('time:'));
-                // const second = item.text.indexOf(',');
-                // const extractTime = item.text.substring(first+1,second); 
-                // console.log(extractTime);
-                // dispatch(appointmentActions.setAppointmentTime(extractTime));
+                extractTime = item.text.substring(firstIndexTime,item.text.indexOf(',')); 
+               
+                    
             }
+            if(/place/.test(item.text)){
+                const searchTerm = ',';
+                const indexOfFirst = item.text.indexOf(searchTerm);
+                const lastIndexPlace = item.text.indexOf(searchTerm, (indexOfFirst + 1))
+                  extractPlace = item.text.substring(indexOfFirst,lastIndexPlace); 
+            }
+            console.log(extractTime + extractPlace);
+            dispatch(appointmentActions.setAppointmentTime(extractTime + extractPlace));
+           
         })
       };
 
@@ -71,9 +70,12 @@ const ChannelListContent = ({ isCreating, setIsCreating, setCreateType, setIsEdi
         Object.keys(client.activeChannels).map(key => {
             if(key){
                 combinedArray.push(...client.activeChannels[key]?.state?.messages);
-                console.log(combinedArray); 
+               
         }
         })
+        const uniq = [...new Set(combinedArray)];
+        setApptTime(uniq);
+      
     }
     const logout = () => {
         cookies.remove("token");
