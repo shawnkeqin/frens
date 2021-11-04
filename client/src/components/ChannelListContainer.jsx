@@ -41,6 +41,7 @@ const customChannelMessagingFilter = (channels) => {
 const ChannelListContent = ({ isCreating, setIsCreating, setCreateType, setIsEditing, setToggleContainer }) => {
     const { client } = useChatContext();
     const dispatch = useDispatch();
+    //regex engine // 
     const setApptTime = (arr) => {
         arr.map(item => {
         var extractTime = '';

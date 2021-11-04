@@ -16,24 +16,12 @@ import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 
 const AppointmentCards = () => {
 const time = useSelector((state) => state?.appointment?.time);
-// const place = useSelector((state) => state?.appointment?.place);
-const testArr = ["Date: 16/11/21, Appointment Name: Dinner with Craig,\Time: 6PM,\Place: Chinatown","Date: 17/11/21, Appointment Name: Lunch with Dad, Time: 12PM, Place: Clarke Quay","Date: 20/11/21, Appointment Name: Drinks with Colleagues, Time: 8PM, Place: Telok Ayer","Date: 17/11/21, Appointment Name: Breakfast with Dad, Time: 10AM, Place: Jurong","Date: 17/11/21, Appointment Name: Breakfast with Dad, Time: 10AM, Place: Jurong","Date: 17/11/21, Appointment Name: Breakfast with Dad, Time: 10AM, Place: Jurong"];
-    {/* <Card className="card_color" sx={{ maxWidth: 275 }}>
-      <CardContent>
-        <Typography style={{color: "white"}}>
-            {/* {time} *
-            hello nice to meet you how are you?
-        </Typography>
-      </CardContent>
-      <CardActions>
-   
-      </CardActions>
-    </Card> */}
-
-// console.log(time);
+var uniq = [...new Set(time)];
+uniq = uniq.filter(Boolean)
+console.log(uniq);
     return (
       <div>
-      {testArr.map((item) =>( 
+      {uniq.map((item) =>( 
         <div style={{display: 'inline-block', marginRight: '10px'}}>
  <Card className="card_color" sx={{ maxWidth: 275 }}>
  <CardContent>
