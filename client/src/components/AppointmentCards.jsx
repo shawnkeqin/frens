@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect, useState} from 'react'
 import { useSelector } from 'react-redux'
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -13,14 +13,18 @@ import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 // }
 
 
-
 const AppointmentCards = () => {
 const time = useSelector((state) => state?.appointment?.time);
+const [appts,setAppts] = useState([]); 
 var uniq = [...new Set(time)];
 uniq = uniq.filter(Boolean)
+
+useEffect(() => {
+  setAppts(uniq);
+}, [time])
     return (
       <div>
-      {uniq.map((item) =>( 
+      {appts.map((item) =>( 
         <div style={{display: 'inline-block', marginRight: '10px'}}>
  <Card className="card_color" sx={{ maxWidth: 275 }}>
  <CardContent>
