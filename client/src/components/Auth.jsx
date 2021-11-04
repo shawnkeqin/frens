@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Cookies from "universal-cookie";
 import axios from "axios";
-
+import { Typography, Box } from '@mui/material';
 import signinImage from "../assets/signup.jpg";
 
 const cookies = new Cookies();
@@ -59,7 +59,7 @@ const Auth = () => {
     <div className="auth__form-container">
       <div className="auth__form-container_fields">
         <div className="auth__form-container_fields-content">
-          <p>{isSignup ? "Sign Up" : "Sign In"}</p>
+          <p>{isSignup ? "Sign Up 🎉" : "Sign In 💃"}</p>
           <form onSubmit={handleSubmit}>
             {isSignup && (
               <div className="auth__form-container_fields-content_input">
@@ -144,8 +144,18 @@ const Auth = () => {
         </div>
       </div>
       <div className="auth__form-container_image">
-        Join Frens
-        {/* <img src={signinImage} alt="sign in" /> */}
+        <div className="auth_text">
+      <Typography sx={{ fontWeight: 'medium' }} color="white" variant="h2" align="center" component="h2">
+ Join 👭 frens
+</Typography>
+<Typography color="white" variant="subtitle1" align="center" component="h2">
+👭 frens is a real-time chat app for friends to chat and set up appointments seamlessly all through chat.
+</Typography>
+<br/>
+<div align="center">
+<iframe src="https://giphy.com/embed/1q9addeaZMx020Gv8u" width="480" height="369" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+</div>
+</div>
       </div>
     </div>
   );

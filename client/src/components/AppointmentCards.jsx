@@ -1,27 +1,28 @@
 import React,{useEffect, useState} from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'; 
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
+import { appointmentActions } from "../app/store";
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 
-// const cardStyle ={
-//   backgroundColor:"#2a3166",
-//   border: "3px solid black"
-// }
-
-
 const AppointmentCards = () => {
 const time = useSelector((state) => state?.appointment?.time);
+const attendance = useSelector((state) => state?.appointment?.attendance);
 const [appts,setAppts] = useState([]); 
+const dispatch = useDispatch(); 
 var uniq = [...new Set(time)];
 uniq = uniq.filter(Boolean)
 
+const setAttendance = () => {
+  dispatch(appointmentActions.setAppointmentAttendance());
+}
+
 useEffect(() => {
   setAppts(uniq);
-}, [time])
+}, [time,appts])
     return (
       <div>
       {appts.map((item) =>( 
@@ -31,10 +32,12 @@ useEffect(() => {
    <Typography style={{color: "white"}}>
    <AccessTimeFilledIcon/> <br/>  {item}
    </Typography>
+   Attendance: {attendance}
  </CardContent>
- <CardActions>
 
+ <CardActions>
  </CardActions>
+ <Button variant="contained" size="small" color="primary" onClick={setAttendance}>Attending</Button>
 </Card> 
 </div>
       ))}

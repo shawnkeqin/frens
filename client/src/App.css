@@ -31,10 +31,21 @@ body {
 }
 
 .card_color{
-  background-color: #2d3436;
-  background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
-  border: 1px solid black  
+  background: #673AB7;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #512DA8, #673AB7);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #512DA8, #673AB7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   
+
+  
+}
+
+.auth_text{
+  width: 50%;
+  margin: 0 auto;
+  position: absolute;
+  margin-left: 40px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 
@@ -42,6 +53,10 @@ body {
   flex: 3;
   display: flex;
   box-shadow: 1px 0px 5px rgba(0, 0, 0, 0.05);
+  background: #8E2DE2;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #4A00E0, #8E2DE2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 
 .auth__form-container_image img {
