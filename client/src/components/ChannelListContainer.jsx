@@ -46,6 +46,7 @@ const ChannelListContent = ({ isCreating, setIsCreating, setCreateType, setIsEdi
         arr.map(item => {
         var extractTime = '';
         var extractPlace = '';
+        var extractDate = ''; 
             if(/time/.test(item.text)){
                 var matchTime = item.text.match(/[time:]/gi);
                 var firstIndexTime = item.text.indexOf(matchTime[0]);
@@ -59,10 +60,20 @@ const ChannelListContent = ({ isCreating, setIsCreating, setCreateType, setIsEdi
                 const lastIndexPlace = item.text.indexOf(searchTerm, (indexOfFirst + 1))
                   extractPlace = item.text.substring(indexOfFirst,lastIndexPlace); 
             }
-            console.log(extractTime + extractPlace);
-            dispatch(appointmentActions.setAppointmentTime(extractTime + extractPlace));
-           
-        })
+            if(/date/.test(item.text)){
+                const searchTerm = 'date';
+                const indexOfFirst = item.text.indexOf(searchTerm);
+                const lastIndexDate = item.text.indexOf('.');
+                extractDate = ', '+ item.text.substring(indexOfFirst,lastIndexDate); 
+            }
+            const res = extractTime + extractPlace  + extractDate; 
+            console.log(res);
+            dispatch(appointmentActions.setAppointmentTime(res));
+        }
+
+        
+        )
+        
       };
 
  

@@ -18,7 +18,6 @@ const AppointmentCards = () => {
 const time = useSelector((state) => state?.appointment?.time);
 var uniq = [...new Set(time)];
 uniq = uniq.filter(Boolean)
-console.log(uniq);
     return (
       <div>
       {uniq.map((item) =>( 
