@@ -23,8 +23,8 @@ const SideBar = ({ logout }) => (
             </div>
         </div>
         <div className="channel-list__sidebar__icon2">
-            <div className="icon1__inner" onClick={logout}>
-                <img src={FeedbackIcon} alt="Feedback" width="30" />
+            <div className="icon1__inner">
+            <a href="https://docs.google.com/forms/d/1_5XK2CTdHkLvwPmkCJ5MeRynlLH6rNd7QfYA8-dIX2E/prefill"> <img src={FeedbackIcon} alt="Feedback" width="30" /></a>           
             </div>
         </div>
     </div>
@@ -47,6 +47,7 @@ const customChannelMessagingFilter = (channels) => {
 const ChannelListContent = ({ isCreating, setIsCreating, setCreateType, setIsEditing, setToggleContainer }) => {
     const { client } = useChatContext();
     const dispatch = useDispatch();
+    let id = 0; 
     //regex engine // 
     const setApptTime = (arr) => {
         arr.map(item => {
@@ -72,9 +73,14 @@ const ChannelListContent = ({ isCreating, setIsCreating, setCreateType, setIsEdi
                 const lastIndexDate = item.text.indexOf('.');
                 extractDate = ', '+ item.text.substring(indexOfFirst,lastIndexDate); 
             }
+            let obj = {}; 
             const res = extractTime + extractPlace  + extractDate; 
+            id++; 
+            obj["id"] = id;
+            obj["details"] = res;
+            obj["attendance"] = 0; 
             console.log(res);
-            dispatch(appointmentActions.setAppointmentTime(res));
+            dispatch(appointmentActions.setAppointmentTime(obj));
         }
 
         

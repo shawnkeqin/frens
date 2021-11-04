@@ -1,5 +1,5 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
-const initialAppointmentState = {time: [], attendance: 0}; 
+const initialAppointmentState = {time: []}; 
 
 const appointmentSlice = createSlice({
   name: "appointment",
@@ -8,10 +8,7 @@ const appointmentSlice = createSlice({
     setAppointmentTime(state, action) {
       state.time.push(action.payload);
     },
-    setAppointmentAttendance(state) {
-      state.attendance++;
-      },
-  },
+  }
 });
 
 

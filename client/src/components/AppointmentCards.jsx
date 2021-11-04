@@ -10,35 +10,43 @@ import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 
 const AppointmentCards = () => {
 const time = useSelector((state) => state?.appointment?.time);
-const attendance = useSelector((state) => state?.appointment?.attendance);
 const [appts,setAppts] = useState([]); 
 const dispatch = useDispatch(); 
-var uniq = [...new Set(time)];
-uniq = uniq.filter(Boolean)
 
-const setAttendance = () => {
-  dispatch(appointmentActions.setAppointmentAttendance());
+const setAttendance = (id) => {
+    // if(id === state?.appointment?.time.id){
+
+    // }
+    // dispatch(appointmentActions.setAppointmentAttendance());
+  
 }
 
 useEffect(() => {
+  var uniq = time.filter((item, index, self) =>
+  index === self.findIndex((t) => (
+    t.details === item.details 
+  ))
+)
+uniq = uniq.filter(Boolean)
   setAppts(uniq);
-}, [time,appts])
+}, [time])
     return (
       <div>
       {appts.map((item) =>( 
         <div style={{display: 'inline-block', marginRight: '10px'}}>
- <Card className="card_color" sx={{ maxWidth: 275 }}>
+{item.details && (<Card key={item.details} className="card_color" sx={{ maxWidth: 275 }}>
  <CardContent>
    <Typography style={{color: "white"}}>
-   <AccessTimeFilledIcon/> <br/>  {item}
+   <AccessTimeFilledIcon/> <br/>  {item.details}
    </Typography>
-   Attendance: {attendance}
+   Attendance: {item.attendance}
  </CardContent>
 
  <CardActions>
  </CardActions>
- <Button variant="contained" size="small" color="primary" onClick={setAttendance}>Attending</Button>
-</Card> 
+ <Button variant="contained" size="small" style={{color: 'purple'}} onClick={setAttendance(item.id)}>Attending</Button>
+</Card> )}
+
 </div>
       ))}
             
