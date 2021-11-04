@@ -14,11 +14,12 @@ const [appts,setAppts] = useState([]);
 const dispatch = useDispatch(); 
 
 const setAttendance = (id) => {
-    // if(id === state?.appointment?.time.id){
-
-    // }
+  for(let i =0; i < appts.length; i += 1){
+    if(appts.id === id){
+        appts.attendance++; 
+    }
+  }
     // dispatch(appointmentActions.setAppointmentAttendance());
-  
 }
 
 useEffect(() => {
