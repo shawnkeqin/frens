@@ -89,6 +89,7 @@ const TeamChannelHeader = ({ setIsEditing }) => {
               <p className="team-channel-header__name user">
                 {user.fullName || user.id}
               </p>
+       
             </div>
           ))}
 
@@ -122,6 +123,8 @@ const TeamChannelHeader = ({ setIsEditing }) => {
       <MessagingHeader />
       <div className="team-channel-header__right">
         <p className="team-channel-header__right-text">
+        //Enter the following format to create an appointment e.g. -  time: 8PM, place: chinatown, date: 14/12/21.  //
+        <br />
           {getWatcherText(watcher_count)}
         </p>
       </div>
