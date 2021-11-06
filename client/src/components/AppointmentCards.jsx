@@ -13,20 +13,20 @@ const time = useSelector((state) => state?.appointment?.time);
 const [appts,setAppts] = useState([]); 
 const dispatch = useDispatch(); 
 
-const setAttendance = (e) => {
-  
-  var removeIndex = appts.map(item => item.id).indexOf(e.target.value);
+const deleteAppt = (e) => {
 
-  ~removeIndex && appts.splice(removeIndex, 1);
+  // var removeIndex = appts.map(item => item.id).indexOf(e.target.value);
+
+  // ~removeIndex && appts.splice(removeIndex, 1);
 //  console.log(specificAppt);
 //  if (specificAppt && specificAppt['attendance']) {
 //   specificAppt['attendance'] += 1;
 //  }
-    // dispatch(appointmentActions.setAppointmentAttendance());
+   dispatch(appointmentActions.deleteAppointment(e.target.value));
 }
 
 useEffect(() => {
-  var uniq = time.filter((item, index, self) =>
+  var uniq = time?.filter((item, index, self) =>
   index === self.findIndex((t) => (
     t.details === item.details 
   ))
@@ -48,7 +48,7 @@ uniq = uniq.filter(Boolean)
 
  <CardActions>
  </CardActions>
- <Button variant="contained" value={item.id} size="small" style={{color: 'purple'}} onClick={setAttendance}>Attending</Button>
+ <Button variant="contained" value={item.id} size="small" style={{color: 'purple'}} onClick={deleteAppt}>Delete</Button>
 </Card> )}
 
 </div>

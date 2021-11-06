@@ -33,6 +33,15 @@ const CreateChannel = ({ createType, setIsCreating }) => {
   const [channelName, setChannelName] = useState(undefined);
 
   const createChannel = async (e) => {
+
+  if (!channelName) {
+    alert('channelName cannot be empty!')
+  }else {
+    createGroup(e);
+  }
+}
+
+  const createGroup = async (e) => {
     e.preventDefault();
     try {
       const newChannel = await client.channel(createType, channelName, {
@@ -46,6 +55,7 @@ const CreateChannel = ({ createType, setIsCreating }) => {
       setIsCreating(false);
       setSelectedUsers([client.userID]);
       setActiveChannel(newChannel);
+
     } catch (error) {
       console.log(error);
     }

@@ -8,6 +8,12 @@ const appointmentSlice = createSlice({
     setAppointmentTime(state, action) {
       state.time.push(action.payload);
     },
+    deleteAppointment(state, action) {
+      // state.time.push(action.payload);
+     
+      state.time.filter(item => item.id !== action.payload);
+     
+    },
   }
 });
 
