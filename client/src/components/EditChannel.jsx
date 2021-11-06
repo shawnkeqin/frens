@@ -19,7 +19,7 @@ const ChannelNameInput = ({ channelName = "", setChannelName }) => {
       <input
         value={channelName}
         onChange={handleChange}
-        placeholder="channe-name"
+        placeholder="Group Name"
       ></input>
       <p>Add Members</p>
     </div>

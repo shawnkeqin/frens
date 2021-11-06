@@ -20,7 +20,7 @@ const ChannelNameInput = ({ channelName = "", setChannelName }) => {
       <input
         value={channelName}
         onChange={handleChange}
-        placeholder="channe-name"
+        placeholder="Group Name"
       ></input>
       <p>Add Members</p>
     </div>
@@ -30,7 +30,7 @@ const ChannelNameInput = ({ channelName = "", setChannelName }) => {
 const CreateChannel = ({ createType, setIsCreating }) => {
   const { client, setActiveChannel } = useChatContext();
   const [selectedUsers, setSelectedUsers] = useState([client.userID || ""]);
-  const [channelName, setChannelName] = useState("");
+  const [channelName, setChannelName] = useState(undefined);
 
   const createChannel = async (e) => {
     e.preventDefault();
@@ -56,7 +56,7 @@ const CreateChannel = ({ createType, setIsCreating }) => {
       <div className="create-channel__header">
         <p>
           {createType === "team"
-            ? "Create a New Channel"
+            ? "Create a New Group"
             : "Send a direct Message"}
         </p>
         <CloseCreateChannel setIsCreating={setIsCreating} />
@@ -70,7 +70,7 @@ const CreateChannel = ({ createType, setIsCreating }) => {
       <UserList setSelectedUsers={setSelectedUsers} />
       <div className="create-channel__button-wrapper" onClick={createChannel}>
         <p>
-          {createType === "team" ? "Create Channel" : "Create Message Group"}
+          {createType === "team" ? "Create Group" : "Create Message Group"}
         </p>
       </div>
     </div>
