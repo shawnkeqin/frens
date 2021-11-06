@@ -31,12 +31,13 @@ const CreateChannel = ({ createType, setIsCreating }) => {
   const { client, setActiveChannel } = useChatContext();
   const [selectedUsers, setSelectedUsers] = useState([client.userID || ""]);
   const [channelName, setChannelName] = useState(undefined);
-
+  const [type, setChatType] = useState("");
+  
   const createChannel = async (e) => {
-
-  if (!channelName) {
-    alert('channelName cannot be empty!')
-  }else {
+  
+  if (createType === 'team' && !channelName) {
+    alert('Group Name cannot be empty!')
+  }else{
     createGroup(e);
   }
 }
@@ -80,7 +81,7 @@ const CreateChannel = ({ createType, setIsCreating }) => {
       <UserList setSelectedUsers={setSelectedUsers} />
       <div className="create-channel__button-wrapper" onClick={createChannel}>
         <p>
-          {createType === "team" ? "Create Group" : "Create Message Group"}
+          {createType === "team" ? "Create Group" : "Start Chat"}
         </p>
       </div>
     </div>
