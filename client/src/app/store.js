@@ -6,8 +6,8 @@ const appointmentSlice = createSlice({
   initialState: initialAppointmentState,
   reducers: {
     setAppointmentTime(state, action) {
-      return state.time?.concat([action.payload])
-  //  state.time.concat(action.payload)
+      // return state.time?.concat([action.payload])
+      state.time?.push(action.payload)
     },
     deleteAppointment(state, action) {
       // state.time.push(action.payload);
