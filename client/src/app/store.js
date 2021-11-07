@@ -9,12 +9,14 @@ const appointmentSlice = createSlice({
       // return state.time?.concat([action.payload])
       state.time?.push(action.payload)
     },
-    deleteAppointment(state, action) {
-      // state.time.push(action.payload);
-     
-      return state.time.filter(item => item.id !== action.payload);
-     
+    updateAppt(state, action) {
+      if(state.time[action.payload]){
+        state.time[action.payload].attendance++;
+      }
     },
+    deleteAppointment(state,action){
+      return state.time?.filter(item => item.id !== action.payload);
+    }
   }
 });
 

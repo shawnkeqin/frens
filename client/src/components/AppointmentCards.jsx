@@ -14,15 +14,12 @@ const [appts,setAppts] = useState([]);
 const dispatch = useDispatch(); 
 
 const deleteAppt = (e) => {
-
-  // var removeIndex = appts.map(item => item.id).indexOf(e.target.value);
-
-  // ~removeIndex && appts.splice(removeIndex, 1);
-//  console.log(specificAppt);
-//  if (specificAppt && specificAppt['attendance']) {
-//   specificAppt['attendance'] += 1;
-//  }
    dispatch(appointmentActions.deleteAppointment(e.target.value));
+}
+
+const updateAttendance = (e) => {
+  // dispatch(appointmentActions.updateAppt(e.target.value));
+  
 }
 
 useEffect(() => {
@@ -36,9 +33,9 @@ uniq = uniq?.filter(Boolean)
 }, [time])
     return (
       <div>
-      {appts?.map((item) =>( 
+      {appts?.map((item,index) =>{( 
         <div style={{display: 'inline-block', marginRight: '10px'}}>
-{item.details && (<Card key={item.details} className="card_color" sx={{ maxWidth: 275 }}>
+{item.details && (<Card  className="card_color" sx={{ maxWidth: 275 }}>
  <CardContent>
    <Typography style={{color: "white"}}>
    <AccessTimeFilledIcon/> <br/>  {item.details}
@@ -48,11 +45,11 @@ uniq = uniq?.filter(Boolean)
 
  <CardActions>
  </CardActions>
- <Button variant="contained" value={item.id} size="small" style={{color: 'purple'}} onClick={deleteAppt}>Delete</Button>
+ <Button variant="contained" value={index} size="small" style={{color: 'purple'}} onClick={updateAttendance}>Delete</Button>
 </Card> )}
 
 </div>
-      ))}
+      )})}
             
         </div>
     )
