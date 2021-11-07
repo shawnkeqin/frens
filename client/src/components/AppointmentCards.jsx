@@ -31,12 +31,12 @@ useEffect(() => {
     t.details === item.details 
   ))
 )
-uniq = uniq.filter(Boolean)
+uniq = uniq?.filter(Boolean)
   setAppts(uniq);
 }, [time])
     return (
       <div>
-      {appts.map((item) =>( 
+      {appts?.map((item) =>( 
         <div style={{display: 'inline-block', marginRight: '10px'}}>
 {item.details && (<Card key={item.details} className="card_color" sx={{ maxWidth: 275 }}>
  <CardContent>
