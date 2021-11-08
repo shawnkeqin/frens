@@ -35,7 +35,7 @@ const App = () => {
   if (!authToken) return <Auth />;
   return (
     <>
-    <div style={{marginBottom: '6px', marginTop: '5px', marginLeft:'3px'}}><AppointmentCards /></div>
+    <div style={{marginBottom: '6px', marginTop: '5px', marginLeft:'3px'}}><AppointmentCards user={client._user.fullName}/></div>
     <div className="app__wrapper">
          
       <Chat client={client} theme="theme light">
