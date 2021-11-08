@@ -7,10 +7,11 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import { appointmentActions } from "../app/store";
 import Button from '@mui/material/Button';
+import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 import Typography from '@mui/material/Typography';
 import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 
-const AppointmentCards = () => {
+const AppointmentCards = (user) => {
 const time = useSelector((state) => state?.appointment?.time);
 const [appts,setAppts] = useState([]); 
 const dispatch = useDispatch(); 
@@ -22,7 +23,8 @@ const deleteAppt = (e) => {
 }
 
 const updateAttendance = (e) => {
- dispatch(appointmentActions.updateAppt(e.target.value));
+  const obj = {user: user.user, id: e.target.value}
+ dispatch(appointmentActions.updateAppt(obj));
  
 }
 
@@ -44,7 +46,7 @@ uniq = uniq?.filter(Boolean)
    <Typography style={{color: "white"}}>
    <AccessTimeFilledIcon/> <br/>  {item.details}
    </Typography>
-   Attendance: {item.attendance}
+   <EmojiPeopleIcon/>: {item.user}
  </CardContent>
 
  <CardActions>

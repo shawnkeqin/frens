@@ -79,6 +79,7 @@ const ChannelListContent = ({ isCreating, setIsCreating, setCreateType, setIsEdi
             obj["id"] = id;
             obj["details"] = res;
             obj["attendance"] = 0; 
+            obj["user"] = ""; 
             dispatch(appointmentActions.setAppointmentTime(obj));
         }
 

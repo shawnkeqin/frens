@@ -10,15 +10,13 @@ const appointmentSlice = createSlice({
       state.time?.push(action.payload)
     },
     updateAppt(state, action) {
-      if(state.time[action.payload]){
-        state.time[action.payload].attendance++;
+      console.log(action.payload);
+      if(state.time[action.payload.id]){
+        state.time[action.payload.id].going = `${action.payload.user} is going`;
       }
     },
     deleteAppointment(state,action){
-    
-   
-      // console.log(action.payload);
-      // return state.time?.filter((item, idx) => idx !== action.payload);
+      return state.time?.filter(item => item.id !== action.payload);
     }
   }
 });
