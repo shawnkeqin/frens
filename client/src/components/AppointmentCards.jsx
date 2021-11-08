@@ -17,6 +17,7 @@ const dispatch = useDispatch();
 
 
 const deleteAppt = (e) => {
+  
   dispatch(appointmentActions.deleteAppointment(e.target.value));
 }
 
@@ -28,7 +29,7 @@ const updateAttendance = (e) => {
 useEffect(() => {
   var uniq = time?.filter((item, index, self) =>
   index === self.findIndex((t) => (
-    t.details === item.details 
+    t?.details === item?.details 
   ))
 )
 uniq = uniq?.filter(Boolean)
@@ -48,7 +49,12 @@ uniq = uniq?.filter(Boolean)
 
  <CardActions>
  </CardActions>
+
  <Button variant="contained" value={index} size="small" style={{color: 'purple'}} onClick={updateAttendance}>Attending</Button>
+
+ <div style={{float: 'right'}}>
+ <Button variant="contained" value={index} size="small" style={{color: 'purple'}} onClick={deleteAppt}>Delete</Button>
+ </div>
 </Card> )}
 
 </div>
