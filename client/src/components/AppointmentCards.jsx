@@ -1,3 +1,5 @@
+
+   
 import React,{useEffect, useState} from 'react'
 import { useSelector, useDispatch } from 'react-redux'; 
 import Card from '@mui/material/Card';
@@ -13,13 +15,14 @@ const time = useSelector((state) => state?.appointment?.time);
 const [appts,setAppts] = useState([]); 
 const dispatch = useDispatch(); 
 
+
 const deleteAppt = (e) => {
-   dispatch(appointmentActions.deleteAppointment(e.target.value));
+  dispatch(appointmentActions.deleteAppointment(e.target.value));
 }
 
 const updateAttendance = (e) => {
-  // dispatch(appointmentActions.updateAppt(e.target.value));
-  
+ dispatch(appointmentActions.updateAppt(e.target.value));
+ 
 }
 
 useEffect(() => {
@@ -33,9 +36,9 @@ uniq = uniq?.filter(Boolean)
 }, [time])
     return (
       <div>
-      {appts?.map((item,index) =>{( 
+      {appts?.map((item, index) =>( 
         <div style={{display: 'inline-block', marginRight: '10px'}}>
-{item.details && (<Card  className="card_color" sx={{ maxWidth: 275 }}>
+{item.details && (<Card key={index} className="card_color" sx={{ maxWidth: 275 }}>
  <CardContent>
    <Typography style={{color: "white"}}>
    <AccessTimeFilledIcon/> <br/>  {item.details}
@@ -45,11 +48,11 @@ uniq = uniq?.filter(Boolean)
 
  <CardActions>
  </CardActions>
- <Button variant="contained" value={index} size="small" style={{color: 'purple'}} onClick={updateAttendance}>Delete</Button>
+ <Button variant="contained" value={index} size="small" style={{color: 'purple'}} onClick={updateAttendance}>Attending</Button>
 </Card> )}
 
 </div>
-      )})}
+      ))}
             
         </div>
     )
