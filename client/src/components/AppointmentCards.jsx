@@ -29,14 +29,14 @@ const updateAttendance = (e) => {
 }
 
 useEffect(() => {
-  var uniq = time?.filter((item, index, self) =>
-  index === self.findIndex((t) => (
-    t?.details === item?.details 
-  ))
-)
-uniq = uniq?.filter(Boolean)
-console.log(uniq);
-  setAppts(uniq);
+//   var uniq = time?.filter((item, index, self) =>
+//   index === self.findIndex((t) => (
+//     t?.details === item?.details 
+//   ))
+// )
+// uniq = uniq?.filter(Boolean)
+// console.log(uniq);
+  setAppts(time);
 }, [time])
     return (
       <div>

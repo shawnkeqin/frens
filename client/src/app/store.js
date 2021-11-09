@@ -16,8 +16,9 @@ const appointmentSlice = createSlice({
       }
     },
     deleteAppointment(state,action){
+      console.log(action.payload);
       // this.lists = this.lists.filter((_, index) => index !== i)
-      // return state.time?.filter((_,index) => index !== action.payload);
+      return state.time?.filter((item,index) => index !== action.payload);
     }
   }
 });
