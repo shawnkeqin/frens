@@ -35,6 +35,7 @@ useEffect(() => {
   ))
 )
 uniq = uniq?.filter(Boolean)
+console.log(uniq);
   setAppts(uniq);
 }, [time])
     return (
@@ -46,7 +47,7 @@ uniq = uniq?.filter(Boolean)
    <Typography style={{color: "white"}}>
    <AccessTimeFilledIcon/> <br/>  {item.details}
    </Typography>
-   <EmojiPeopleIcon/>: {item.user}
+   <EmojiPeopleIcon/>: {item.going}
  </CardContent>
 
  <CardActions>
